@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: dbtest
+      POSTGRES_PASSWORD: dbtest
+      POSTGRES_DB: dbtest
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U dbtest" ]
+      interval: 2s
+      timeout: 3s
+      retries: 30
