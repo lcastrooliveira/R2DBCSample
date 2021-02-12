@@ -18,6 +18,11 @@
             <artifactId>r2dbc-postgresql</artifactId>
             <version>0.8.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-pg-client</artifactId>
+            <version>4.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>

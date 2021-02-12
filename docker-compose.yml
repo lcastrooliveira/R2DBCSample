@@ -1,6 +1,26 @@
 version: "3.4"
 
 services:
+  pgbouncer:
+    image: edoburu/pgbouncer
+    ports:
+      - 6432:5432
+    volumes:
+      - type: bind
+        source: $PWD/userlist.txt
+        target: /etc/pgbouncer/userlist.txt
+    environment:
+      # DATABASE_URL: postgresql://dbtest:dbtest@postgres:5432/dbtest
+      DB_USER: dbtest
+      DB_PORT: 5432
+      DB_PASSWORD: dbtest
+      DB_HOST: postgres
+      DB_NAME: dbtest
+      POOL_MODE: transaction
+      ADMIN_USERS: postgres,dbtest
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres
     ports:
